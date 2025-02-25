@@ -1,7 +1,33 @@
 h1{color: mediumpurple;}
+
 #p_1{font-size: larger;}
+
 #p_2{font-size: medium;}
+
 .Bigtechs{color: navy;}
+
 .Valores{color: red;}
+
 h3:hover{color: gold;}
+
 li:hover{color: aqua;}
+
+#menu{border-radius: 10px;
+  color:black;
+position: fixed;
+top:0px;
+left:0px;
+display: inline;
+background-color:green;
+width: 100px;}
+
+#impacto{border-radius: 10px;
+color: blue;
+position:fixed;
+top:0px;
+left: 115px;}
+
+#menu:hover{color: white;}
+
+
+
