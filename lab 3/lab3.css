@@ -1,0 +1,28 @@
+img{
+    height: 100px;
+    width: 100px;
+}
+#java{position:absolute;
+right: 10px;
+top: 10px;}
+
+#C{position:absolute;
+    left: 10px;   
+    top: 10px;
+}
+
+#header{background-color: bisque ;
+    display: flex;
+justify-content: space-around;
+border: solid blue;
+height: 125px;
+}
+
+#links{
+    background-color: lightskyblue ;
+    color: darkred ;
+}
+
+body{
+    background-color: lightgray ;
+}
