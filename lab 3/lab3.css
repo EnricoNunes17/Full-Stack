@@ -1,122 +1,146 @@
-#C,#java{
+#C,
+#java {
     height: 100px;
     width: 100px;
 }
-#java{position:absolute;
-right: 10px;
-top: 10px;
-position: fixed;
+
+#java {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
 }
 
-#C{position:absolute;
-    left: 10px;   
+#C {
+    position: absolute;
+    left: 10px;
     top: 10px;
     margin-bottom: 10px;
-    position: fixed;
+
 }
 
-#header{background-color: bisque ;
+#header {
+    background-color: bisque;
     display: flex;
-justify-content: space-around;
-border: solid blue;
-height: 125px;
+    justify-content: space-around;
+    border: solid blue;
+    height: 125px;
 }
 
-#links{
-    background-color: lightskyblue ;
-    color: darkred ;
+#links {
+    background-color: lightskyblue;
+    color: darkred;
+    display: flex;
+    justify-content: space-around;
     word-spacing: 10px;
+    text-align: center;
+    padding: 10px;
+    padding-left: 300px;
+    padding-right: 300px;
+    align-items: center;
+
+
 }
 
-body{
-    background-color: lightgray ;
+body {
+    background-color: lightgray;
 }
 
-#head{
+#head {
     color: darkgreen;
 }
 
-h2{
+h2 {
     text-align: center;
 }
 
-.p_1{
-    text-align:center;
-    color: indigo ;
+.p_1 {
+    text-align: center;
+    color: indigo;
     font-size: 20pt;
     font-family: sans-serif;
 }
 
-.livros{
-   position: relative;
+.livros {
+    position: relative;
     text-align: center;
     word-spacing: 50px;
-   
+
 }
 
-#livro_1,#livro_2,#livro_3{
+#livro_1,
+#livro_2,
+#livro_3 {
     height: 300px;
-   width: 200px;
+    width: 200px;
 }
 
-.rodape{
-    background-color: bisque ;
+.rodape {
+    background-color: bisque;
     display: flex;
-justify-content: space-around;
-border: solid;
-height: 125px;
+    justify-content: space-between;
+    border: solid;
+    height: 125px;
 }
 
-#html,#css{
+#html,
+#css {
     height: 100px;
     width: 80px;
 }
 
-#html{
-    position:absolute;
-    left: 10px;   
-    bottom: 10px;
-    margin-bottom: 10px;
-    position: fixed;
+
+
+#texto_rodape {
+    text-align: center;
+    font-size: 15pt;
+    font-family: sans-serif;
 }
 
-#css{ position:absolute;
-    right: 10px;
-    bottom: 10px;
-    position: fixed;
-
+.iframes_div {
+    justify-content: space-around;
+    text-align: center;
 }
 
-#texto_rodape{
-    text-align:center;
-   font-size: 15pt;
-font-family: sans-serif;
+
+
+table {
+    border: dashed 4px red;
+    margin: auto;
 }
 
-.iframes_div{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-    
-    
-}
-#iframe_1,#iframe_2{
-    height: 400px;
-   width: 400px;
+th {
+    border: 1px solid red;
 }
 
-#texto_iframe{
-    word-spacing: normal;
+tr {
+    border: 1px solid red;
 }
 
-table,th,td{
-    border: dotted 1px;
+#tr1 {
     color: red;
-    border-collapse: collapse;
 }
 
-.sites{
+.sites {
     background-color: yellow;
-  
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin-left: 650px;
+    width: 600px;
+    height: 100px;
+
+}
+
+iframe {
+    width: 450px;
+    height: 450px;
+}
+
+h3 {
+    text-align: left;
+}
+
+a{
+    color: darkred ;
 }
