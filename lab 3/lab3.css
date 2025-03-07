@@ -122,14 +122,10 @@ tr {
 }
 
 .sites {
-    background-color: yellow;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    margin-left: 650px;
-    width: 600px;
-    height: 100px;
-
+   max-width: 700px;
+   margin: auto;
+   justify-content: center;
+ background-color: yellow;
 }
 
 iframe {
