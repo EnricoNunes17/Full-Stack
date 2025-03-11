@@ -98,8 +98,10 @@ h2 {
 }
 
 .iframes_div {
-    justify-content: space-around;
+    justify-content: space-evenly;
     text-align: center;
+   
+
 }
 
 
