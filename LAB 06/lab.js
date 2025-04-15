@@ -3,13 +3,13 @@ let ctx = canvas.getContext('2d');
 
 
 
-let bola = {
+let pistol = {
 x: 250,
 y: 250,
 raio: 50,
 img: new Image(),
 desenha: function() {
-this.img.src = 'bola.png';
+this.img.src = 'pistol.png';
 ctx.beginPath();
 ctx.drawImage(this.img, this.x, this.y, 2*this.raio, 2*this.raio);
 ctx.closePath();
@@ -17,12 +17,12 @@ ctx.closePath();
 }
 
 function animacao(){
-if (bola.x == 300) {
-bola.x = 300
+if (pistol.x == 300) {
+    pistol.x = 300
 }
 
 ctx.clearRect(0,0,400,400)
-bola.desenha();
+pistol.desenha();
 requestAnimationFrame(animacao)
 }
 animacao();
@@ -31,19 +31,19 @@ let rect = canvas.getBoundingClientRect();
 let x_mouse = evento.clientX - rect.left - 50;
 let y_mouse = evento.clientY - rect.top - 50;
 console.log(x_mouse,y_mouse);
-bola.x = x_mouse;
-bola.y = y_mouse;
-if (bola.x > 200){
-bola.x = 200
+pistol.x = x_mouse;
+pistol.y = y_mouse;
+if (pistol.x > 200){
+    pistol.x = 200
 }
-if (bola.x < 0){
-bola.x = 0
+if (pistol.x < 0){
+    pistol.x = 0
 }
-if (bola.y < 0){
-bola.y = 0
+if (pistol.y < 0){
+    pistol.y = 0
 }
-if (bola.y > 200){
-bola.y = 200
+if (pistol.y > 200){
+    pistol.y = 200
 }
 
 
