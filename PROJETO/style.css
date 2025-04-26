@@ -14,10 +14,11 @@ h3{
   margin-right: 275px;
 }
 
-#canvas{
+#canvas{ 
+    background-color: black;
     width:750px;
     height:750px ;
-    border: 1px solid black;
+    border: 1px solid ;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -26,16 +27,22 @@ h3{
 #canvas div{
     width: 50px;
     height: 50px;
-    box-shadow: 1.66px 1.66px black ;
 }
 
 .tanque{
-    background: url("###") no-repeat ;
+    background-image: url("OIP-removebg-preview.pngs");
+    background-repeat: no-repeat;
     background-size: contain;
 
 }
 
-.ovini{
-    background: url("###") no-repeat;
+.ovnis {
+    background-image: url('WhatsApp\ Image\ 2025-04-25\ at\ 17.48.35.jpeg');
+    background-repeat: no-repeat;
     background-size: contain;
+}
+.lazer::after{
+    content: """";
+
+
 }
