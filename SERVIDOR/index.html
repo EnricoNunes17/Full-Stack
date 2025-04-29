@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SERVIDOR</title>
+        <meta charset="UTF-8">
+        <link href="estilos.css" rel="Stylesheet">
+    </head>
+    <body>
+        <h1>Meu primeiro servidor</h1>
+        <h2>Exemplo de GET</h2>
+        <form method="get" action="/inicio">
+            <input type="submit" value="Clique para iniciar!">
+        </form>
+        <h2>Exemplo de POST</h2>
+        <form method = "post" action="/inicio">
+            <input type="submit" value="Clique para iniciar!">
+        </form>
+        <h2>Exemplo de cadastro de usuario usando GET</h2>
+        <form method="get" action="/Cadastrar">
+            <p>Nome: <input type="text" name="Nome"></p>
+            <p>Email:<input type="email" name="Email"></p>
+            <p>Senha:<input type="password" name="Senha"></p></p>
+            <p>Data de nascimento:<input type="date" name="Data"></p>
+            <input type="submit" value="Cadastrar">
+
+        </form>
+        <h2>Exemplo de cadastro de usuario usando POST</h2>
+        <form method="post" action="/Cadastrar">
+            <p>Nome: <input type="text" name="Nome"></p>
+            <p>Email:<input type="email" name="Email"></p>
+            <p>Senha:<input type="password" name="Senha"></p></p>
+            <p>Data de nascimento:<input type="date" name="Data"></p>
+            <input type="submit" value="Cadastrar">
+
+        <h2>Exemplo de for no ejs</h2>
+        <form method="get" action="/for_ejs">
+            <p>Numero de DIVs: <input type="number"></p>
+            <input type="submit" value="Clique para gerar DIVs">
+        </form>
+    </body>
+</html>
