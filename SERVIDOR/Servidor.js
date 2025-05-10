@@ -100,34 +100,48 @@ app.post('/inicio', function(requisicao,resposta){
 //     });
 
 //   });
-const usuarioValido = {
-  email: 'admin@example.com',
-  senha: '1234'
-};
-app.post('/login', function(requisicao,resposta){
-  let Email = requisicao.query.Email
-  let Senha = requisicao.query.Senha
-    console.log(Email,Senha,)
-      if (Email === usuarioValido.email && Senha === usuarioValido.senha) {
-        resposta.render('resposta.ejs', {
-          mensagem: "Usuário logado com sucesso!",
-          login: Email,
-          senha: Senha
-        });
-      } else {
-        resposta.render('resposta.ejs', {
-          mensagem: "Erro: usuário ou senha incorretos.",
-          login: Email,
-          senha: '********'
-        });
-      }
-    });
 
-app.post('/Cadastrar', function(requisicao,resposta){
-      let Nome = requisicao.body.Nome
-      let Email = requisicao.body.Email
-      let Senha = requisicao.body.Senha
-      let Data = requisicao.body.Data
-      console.log(Nome,Email,Senha,Data)
-      resposta.render('resposta.ejs', {mensagem: "Usuário Cadastrado com sucesso", usuario: Nome, login: Email})
-})
+let usuarioValido = {};
+
+app.post('/Cadastrar', function(requisicao, resposta) {
+  let Nome = requisicao.body.Nome;
+  let Email = requisicao.body.Email;
+  let Senha = requisicao.body.Senha;
+  let Data = requisicao.body.Data;
+
+  usuarioValido = {
+    nome: Nome,
+    email: Email,
+    senha: Senha,
+    data: Data
+  };
+
+  console.log(Nome, Email, Senha, Data);
+
+  resposta.render('resposta.ejs', {
+    mensagem: "Usuário cadastrado com sucesso!",
+    usuario: Nome,
+    login: Email
+  });
+});
+
+app.post('/login', function(requisicao, resposta) {
+  let Email = requisicao.body.Email;
+  let Senha = requisicao.body.Senha;
+
+  console.log(Email, Senha);
+
+  if (Email === usuarioValido.email && Senha === usuarioValido.senha) {
+    resposta.render('resposta.ejs', {
+      mensagem: "Usuário logado com sucesso!",
+      login: Email,
+      senha: Senha
+    });
+  } else {
+    resposta.render('resposta.ejs', {
+      mensagem: "Erro: usuário ou senha incorretos.",
+      login: Email,
+      senha: '********'
+    });
+  }
+});

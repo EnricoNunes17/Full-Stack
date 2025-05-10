@@ -1,0 +1,30 @@
+body {
+  background-color: #f0f0f0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+form {
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  width: 300px;
+  border-radius: 10px;
+}
+input, textarea {
+  width: 90%;
+  margin-bottom: 10px;
+}
+.post {
+  background: #fff;
+  margin: 15px auto;
+  padding: 15px;
+  width: 60%;
+  border-radius: 10px;
+}
+.confirm {
+  background: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 200px;
+  border-radius: 10px;
+}
