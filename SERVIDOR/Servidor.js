@@ -1,147 +1,115 @@
-require("colors");
-// inclui o módulo http
- var http = require('http');
-// inclui o módulo express
- var express = require('express' ) ;
- let bodyParser = require("body-parser")
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const server = express();
+const { MongoClient } = require('mongodb');
+const uri = 'mongodb+srv://dantasmilan23:L05ang3l35@enrico.pvyxi2g.mongodb.net/?retryWrites=true&w=majority&appName=Enrico'; // URL do MongoDB (ajuste conforme necessário)
+const client = new MongoClient(uri);
 
+let db;
 
- // cria a variável app, pela qual acessaremos
-// os métodos / funções existentes no framework
- // express
- var app = express () ;
-// Criando um Banco de Dados
-//  var mongodb = require("mongodb");
+// Conecta ao banco de dados
+client.connect()
+    .then(() => {
+        db = client.db('blogDB'); // Nome do banco de dados
+        console.log('Conectado ao MongoDB');
+    })
+    .catch(err => {
+        console.error('Erro ao conectar ao MongoDB:', err);
+    });
 
-// const MongoClient = mongodb.MongoClient;
+// Middleware para servir arquivos estáticos e processar requisições POST
+server.use(express.static(path.join(__dirname, 'public')));
+server.use(bodyParser.urlencoded({ extended: true }));
 
-
-// const uri = `mongodb+srv://enriconunes17:Curr1@2016@clusterenrico.fxryhl0.mongodb.net/?retryWrites=true&w=majority&appName=ClusterEnrico`;
-
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// var dbo = client.db("exemplo_bd");
-// var usuarios = dbo.collection("usuarios");
-
-
-
- app. use (express.static('./public'));
- app.use(bodyParser.urlencoded({extended: false }))
-app.use(bodyParser.json())
-// método use() utilizado para definir em qual
-// pasta estará o conteúdo estático
- app. use (express.static('./public'));
-
- // cria o servidor
- var server = http.createServer(app);
-
-// define o número da porta que o servidor ouvirá
-server.listen(80)
-
-// mensagem exibida no console para debug
-console.log("Olá Mundo!".rainbow);
-
-// Exemplos de Get e Post
-app.get('/', function(requisicao,resposta){
-  resposta.redirect('Lab1/projects.html')
-})
-app.get('/inicio', function(requisicao,resposta){
-    resposta.redirect('')
-})
-app.post('/inicio', function(requisicao,resposta){
-    resposta.redirect('')
-})
-
-// app.get('/Cadastrar', function(requisicao,resposta){
-//     let Nome = requisicao.query.Nome
-//     let Email = requisicao.query.Email
-//     let Senha = requisicao.query.Senha
-//     let Data = requisicao.query.Data
-  
-//     console.log(Nome,Email,Senha,Data)
-    
-//     resposta.render('resposta.ejs', {mensagem: "Usuário cadastrado com sucesso", usuario: Nome, login: Email})
-// })
-
-// app.post('/Cadastrar', function(requisicao,resposta){
-//     let Nome = requisicao.body.Nome
-//     let Email = requisicao.body.Email
-//     let Senha = requisicao.body.Senha
-//     let Data = requisicao.body.Data
-//     console.log(Nome,Email,Senha,Data)
-//     let data = {db_Nome: Nome, db_email: Email , db_senha : Senha , db_Data: Data}
-//     usuarios.insertOne(data, function (err) {
-//         if (err) {
-//           resp.render('resposta_usuario', {resposta: "Erro ao cadastrar usuário!"})
-//         }else {
-//           resp.render('resposta_usuario', {resposta: "Usuário cadastrado com sucesso!"})        
-//         };
-//       });
-     
-//     });
-  
-// app.get('/for_ejs', function(requisicao,resposta){
-//     let num = requisicao.query.num
-//     resposta.render('exemplo_for.ejs', {tamanho: num})
-// })
-// app.post('/login', function (requisicao,resposta){
-//   let email = requisicao.body.Email;
-//   let senha = requisicao.body.Senha;
-//   console.log (Email,Senha);
-//   let data = {db_email: Email , db_senha : Senha}
-//   usuarios.find(data).toArray(function(erro,items){
-//     console.log(items)
-//       if (items.length == 0) {
-//         resp.render('resposta_usuario', {resposta: "Usuário/senha não encontrado!"})
-//       }else if (erro) {
-//         resp.render('resposta_usuario', {resposta: "Erro ao logar usuário!"})
-//       }else {
-//         resp.render('resposta_usuario', {resposta: "Usuário logado com sucesso!"})        
-//       };
-//     });
-
-//   });
-
-let usuarioValido = {};
-
-app.post('/Cadastrar', function(requisicao, resposta) {
-  let Nome = requisicao.body.Nome;
-  let Email = requisicao.body.Email;
-  let Senha = requisicao.body.Senha;
-  let Data = requisicao.body.Data;
-
-  usuarioValido = {
-    nome: Nome,
-    email: Email,
-    senha: Senha,
-    data: Data
-  };
-
-  console.log(Nome, Email, Senha, Data);
-
-  resposta.render('resposta.ejs', {
-    mensagem: "Usuário cadastrado com sucesso!",
-    usuario: Nome,
-    login: Email
-  });
+server.get('/', (req, res) => {
+    res.redirect('Lab1/projects.html');
 });
 
-app.post('/login', function(requisicao, resposta) {
-  let Email = requisicao.body.Email;
-  let Senha = requisicao.body.Senha;
-
-  console.log(Email, Senha);
-
-  if (Email === usuarioValido.email && Senha === usuarioValido.senha) {
-    resposta.render('resposta.ejs', {
-      mensagem: "Usuário logado com sucesso!",
-      login: Email,
-      senha: Senha
-    });
-  } else {
-    resposta.render('resposta.ejs', {
-      mensagem: "Erro: usuário ou senha incorretos.",
-      login: Email,
-      senha: '********'
-    });
-  }
+// Serve a página home.html
+server.get('/home', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
+
+// Serve a página project.html
+server.get('/projects', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'Lab1/projects.html'));
+});
+
+// Serve a página Cadastro.html
+server.get('/cadastra', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'LAB08/Cadastro.html'));
+});
+
+// Serve a página Login.html
+server.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'LAB08/login.html'));
+});
+
+// Configuração do EJS para renderizar páginas dinâmicas
+server.set('view engine', 'ejs');
+server.set('views', path.join(__dirname, 'views'));
+
+// Simula um banco de dados em memória para usuários
+const users = [];
+
+// Rota para processar o cadastro
+server.post('/cadastra', (req, res) => {
+    const { username, password } = req.body;
+    if (users.find(user => user.username === username)) {
+        return res.send('Usuário já cadastrado!');
+    }
+    users.push({ username, password });
+    res.send('Cadastro realizado com sucesso! <a href="/login">Ir para Login</a>');
+});
+
+// Rota para processar o login e renderizar a resposta dinâmica
+server.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    const user = users.find(user => user.username === username && user.password === password);
+    const status = user ? 'Sucesso' : 'Falha';
+    res.render('resposta', { username, status });
+});
+const posts = []; // Simula um banco de dados em memória para posts
+
+server.get('/blog', async (req, res) => {
+    try {
+        const collection = db.collection('posts');
+        const posts = await collection.find().toArray(); // Busca todos os posts
+        res.render('blog', { posts });
+    } catch (err) {
+        console.error('Erro ao buscar posts:', err);
+        res.status(500).send('Erro ao carregar posts.');
+    }
+});
+
+// Serve a página cadastrar_post.html
+server.get('/cadastrar_post', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'LAB09/cadastrar_post.html'));
+}); 
+
+server.post('/cadastrar_post', async (req, res) => {
+    const { titulo, resumo, conteudo } = req.body;
+
+    try {
+        const collection = db.collection('posts'); // Nome da coleção
+        await collection.insertOne({ titulo, resumo, conteudo });
+        res.redirect('Lab1/blog.ejs');
+    } catch (err) {
+        console.error('Erro ao cadastrar post:', err);
+        res.status(500).send('Erro ao cadastrar post.');
+    }
+});
+
+// Rota para cadastrar um novo post
+server.post('/cadastrar_post', (req, res) => {
+    const { titulo, resumo, conteudo } = req.body;
+    posts.push({ titulo, resumo, conteudo });
+    res.redirect('/blog');
+});
+
+// Inicia o servidor na porta 80
+server.listen(80, () => {
+    console.log('Servidor rodando na porta 80');
+    console.log('Acesse pelo navegador: http://localhost/');
+})

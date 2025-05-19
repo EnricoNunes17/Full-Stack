@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Blog</h1>
+    <a href="Lab1/LAB09/cadastrar_post.html">Criar Novo Post</a>
+    <ul>
+        <% posts.forEach(post => { %>
+            <li>
+                <h2><%= post.titulo %></h2>
+                <p><%= post.resumo %></p>
+                <p><%= post.conteudo %></p>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
+
