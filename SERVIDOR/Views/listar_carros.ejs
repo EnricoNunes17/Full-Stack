@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Carros</title>
+
+</head>
+<body>
+  <h1>Carros Cadastrados</h1>
+
+  <% if (carros.length === 0) { %>
+    <p>Nenhum carro cadastrado.</p>
+  <% } else { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Ano</th>
+          <th>Quantidade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% carros.forEach(car => { %>
+          <tr>
+            <td><%= car.db_marca %></td>
+            <td><%= car.db_modelo %></td>
+            <td><%= car.db_ano %></td>
+            <td><%= car.db_qtd %></td>
+            <td>
+              <!-- Botão VENDER -->
+              <% if (car.db_qtd > 0) { %>
+                <form action="/vender_carro" method="POST">
+                  <input type="hidden" name="id" value="<%= car._id %>" />
+                  <input type="submit" value="Vender" />
+                </form>
+              <% } else { %>
+                <span style="color: red; font-weight: bold;">Esgotado</span>
+              <% } %>
+
+              
+              <form action="/remover_carro" method="POST">
+                <input type="hidden" name="id" value="<%= car._id %>" />
+                <input type="submit" value="Remover" />
+              </form>
+
+
+              <form action="/atualizar_carro" method="POST">
+                <input type="hidden" name="id" value="<%= car._id %>" />
+                <input type="number" name="nova_qtd" placeholder="Qtd" required />
+                <input type="submit" value="Atualizar" />
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</body>
+</html>

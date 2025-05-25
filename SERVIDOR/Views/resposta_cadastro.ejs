@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Resposta do Login</title>
+  
+</head>
+<body>
+  <div>
+    <div><%= mensagem %></div>
+    <% if (login) { %>
+      <div>Login: <%= login %></div>
+    <% } %>
+    <a href="/logar">Voltar para Login</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .post {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .post h2 {
+            margin: 0;
+            color: #0077cc;
+        }
+        .post p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todos os Posts</h1>
+
+    <% if (posts.length > 0) { %>
+        <% posts.forEach(function(post) { %>
+            <div class="post">
+                <h2><%= post.titulo %></h2>
+                <p><%= post.conteudo %></p>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>Nenhum post encontrado.</p>
+    <% } %>
+</body>
+</html>
